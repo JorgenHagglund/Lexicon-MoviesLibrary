@@ -17,5 +17,5 @@ public class Movie
     public string AlternateTitle { get; set; }
 
     [DataType(DataType.Duration)]
-    public int Runtime { get; set; } 
+    public int Runtime { get; set; }
 }
