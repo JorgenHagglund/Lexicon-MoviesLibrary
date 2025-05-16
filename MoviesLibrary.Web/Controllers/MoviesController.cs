@@ -19,4 +19,19 @@ public class MoviesController : Controller
             return NotFound();
         return View(movie);
     }
+
+    [HttpGet("/add")]
+    public IActionResult Add() =>
+        View(new Models.Movie());
+
+    [HttpPost("/add")]
+    public IActionResult Add(Models.Movie movie)
+    {
+        if (ModelState.IsValid)
+        {
+            _movieService.AddMovie(movie);
+            return RedirectToAction("Index");
+        }
+        return View(movie);
+    }
 }

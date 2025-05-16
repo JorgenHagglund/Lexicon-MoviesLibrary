@@ -1,0 +1,67 @@
+﻿@model MoviesLibrary.Web.Models.Movie
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers    
+@addTagHelper *, MoviesLibrary.Web
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Add a movie</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <bootstrap-css />
+        <link rel="stylesheet" type="text/css" href="/CSS/styles.css" />
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+        <bootstrap-js />
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="@Url.Action("Index", "Movies")">Movies Library</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <a class="nav-link" href="@Url.Action("Index", "Movies")">Home</a>
+                <a class="nav-link" href="@Url.Action("Add", "Movies")">Add Movie</a>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1>Add a movie</h1>
+                <form asp-action="Add" method="post">
+                    <div class="mb-3">
+                        <label asp-for="Title" class="form-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Genres" class="form-label"></label>
+                        <input asp-for="Genres" class="form-control" />
+                        <span asp-validation-for="Genres" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="ReleaseDate" class="form-label"></label>"
+                        <input asp-for="ReleaseDate" class="form-control" type="date" />
+                        <span asp-validation-for="ReleaseDate" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Runtime" class="form-label"></label>
+                        <input asp-for="Runtime" class="form-control" type="number" min="0" />
+                        <span asp-validation-for="Runtime" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="PosterUrl" class="form-label"></label>
+                        <input asp-for="PosterUrl" class="form-control" type="text" />
+                        <span asp-validation-for="PosterUrl" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Movie</button>
+                </form>
+            </div>
+            <div class="col-6">
+                <div asp-validation-summary="All"></div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>

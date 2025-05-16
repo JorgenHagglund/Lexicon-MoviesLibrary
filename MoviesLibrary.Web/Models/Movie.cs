@@ -24,4 +24,6 @@ public class Movie
     public string[] Genres { get; set; }
 
     public DateOnly ReleaseDate { get; set; }
+
+    public string PosterUrl { get; set; }
 }

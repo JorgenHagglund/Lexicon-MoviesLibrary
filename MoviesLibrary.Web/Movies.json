@@ -9,7 +9,8 @@
       "Drama",
       "Crime"
     ],
-    "ReleaseDate": "1994-09-23"
+    "ReleaseDate": "1994-09-23",
+    "PosterUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7JlNQZtNQn4h0iXWZ6rsq3eqMlH.jpg"
   },
   {
     "Id": 2,
@@ -21,7 +22,8 @@
       "Drama",
       "Crime"
     ],
-    "ReleaseDate": "1972-03-24"
+    "ReleaseDate": "1972-03-24",
+    "PosterUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7ywOC17VdSZ8bCFE33ZlxCVTSZr.jpg"
   },
   {
     "Id": 3,
@@ -35,6 +37,7 @@
       "Drama",
       "Thriller"
     ],
-    "ReleaseDate": "2008-07-18"
+    "ReleaseDate": "2008-07-18",
+    "PosterUrl": "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qJ2tW6WMUDux911r6m7haRef0WH.jpg"
   }
 ]
