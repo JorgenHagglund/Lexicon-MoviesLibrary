@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MoviesLibrary.Web.Validators;
+using System.ComponentModel.DataAnnotations;
 
 namespace MoviesLibrary.Web.Models;
 
+[NoEqualTitles(ErrorMessage = "The titles must be different")]
 public class Movie
 {
-    public int Id { get; set; }
+    public uint Id { get; set; }
     [Required(ErrorMessage = "The movie needs a title")]
     [Display(Description = "The title of the movie", Prompt = "Localized title")]
     public string Title { get; set; }
