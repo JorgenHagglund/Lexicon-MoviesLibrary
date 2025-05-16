@@ -20,4 +20,8 @@ public class Movie
 
     [DataType(DataType.Duration)]
     public int Runtime { get; set; }
+
+    public string[] Genres { get; set; }
+
+    public DateOnly ReleaseDate { get; set; }
 }

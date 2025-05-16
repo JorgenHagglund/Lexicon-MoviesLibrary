@@ -10,7 +10,8 @@ public class MovieService
 
     public MovieService()
     {
-        movies = JsonSerializer.Deserialize<List<Movie>>(File.ReadAllText("Movies.json")) ?? new List<Movie>();
+        var path = Path.Combine(AppContext.BaseDirectory, "Movies.json");
+        movies = JsonSerializer.Deserialize<List<Movie>>(File.ReadAllText(path)) ?? new List<Movie>();
         mextId = movies.Count == 0 ? 1 : movies.Max(m => m.Id) + 1;   
     }
 

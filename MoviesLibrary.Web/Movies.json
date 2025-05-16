@@ -4,20 +4,37 @@
     "Title": "The Shawshank Redemption",
     "OriginalTitle": "The Shawshank Redemption",
     "AlternateTitle": "Rita Hayworth and Shawshank Redemption",
-    "Runtime": 142
+    "Runtime": 142,
+    "Genres": [
+      "Drama",
+      "Crime"
+    ],
+    "ReleaseDate": "1994-09-23"
   },
   {
     "Id": 2,
     "Title": "The Godfather",
     "OriginalTitle": "The Godfather",
     "AlternateTitle": "The Godfather",
-    "Runtime": 175
+    "Runtime": 175,
+    "Genres": [
+      "Drama",
+      "Crime"
+    ],
+    "ReleaseDate": "1972-03-24"
   },
   {
     "Id": 3,
     "Title": "The Dark Knight",
     "OriginalTitle": "The Dark Knight",
     "AlternateTitle": "Batman: The Dark Knight",
-    "Runtime": 152
+    "Runtime": 152,
+    "Genres": [
+      "Action",
+      "Crime",
+      "Drama",
+      "Thriller"
+    ],
+    "ReleaseDate": "2008-07-18"
   }
 ]

@@ -10,4 +10,13 @@ public class MoviesController : Controller
     [HttpGet("/")]
     public IActionResult Index() =>
         View(_movieService.GetAllMovies());
+
+    [HttpGet("/details")]
+    public IActionResult Details(int id)
+    {
+        var movie = _movieService.GetMovie(id);
+        if (movie == null)
+            return NotFound();
+        return View(movie);
+    }
 }
