@@ -36,6 +36,16 @@
                         <span asp-validation-for="Title" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
+                        <label asp-for="OriginalTitle" class="form-label"></label>
+                        <input asp-for="OriginalTitle" class="form-control" />
+                        <span asp-validation-for="OriginalTitle" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="AlternateTitle" class="form-label"></label>
+                        <input asp-for="AlternateTitle" class="form-control" />
+                        <span asp-validation-for="AlternateTitle" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
                         <label asp-for="Genres" class="form-label"></label>
                         <input asp-for="Genres" class="form-control" />
                         <span asp-validation-for="Genres" class="text-danger"></span>
