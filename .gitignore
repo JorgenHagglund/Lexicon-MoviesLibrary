@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MoviesLibrary.Web/wwwroot/JavaScript/jquery
+/MoviesLibrary.Web/wwwroot/JavaScript/jquery-validate
+/MoviesLibrary.Web/wwwroot/JavaScript/jquery-validation-unobtrusive
