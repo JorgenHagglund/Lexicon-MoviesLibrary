@@ -32,7 +32,17 @@ public class MoviesController : Controller
         var movie = _movieService.GetMovie(id);
         if (movie == null)
             return NotFound();
-        return View(movie);
+
+        return View(new DetailsVM
+        {
+            AlternateTitle = movie.AlternateTitle,
+            Genres = movie.Genres,
+            OriginalTitle = movie.OriginalTitle,
+            PosterUrl = movie.PosterUrl,
+            ReleaseDate = movie.ReleaseDate,
+            Runtime = movie.Runtime,
+            Title = movie.Title
+        });
     }
 
     [HttpGet("/add")]

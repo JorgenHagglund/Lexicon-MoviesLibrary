@@ -1,4 +1,4 @@
-﻿@model Movie
+﻿@model DetailsVM
 @{
     ViewBag.Title = $"Details about {@Model.OriginalTitle}";
 }
@@ -9,6 +9,14 @@
 <div class="col-md-8">
     <h1>Details about @Model.Title</h1>
     <p><strong>Title:</strong> @Model.Title</p>
+    @if (Model.Title != Model.OriginalTitle)
+    {
+        <p><strong>Original Title:</strong> @Model.OriginalTitle</p>
+    }
+    @if (!String.IsNullOrWhiteSpace(Model.AlternateTitle))
+    {
+        <p><strong>Alternate Title:</strong> @Model.AlternateTitle</p>
+    }
     <p><strong>Genre:</strong> @String.Join(", ", Model.Genres)</p>
     <p><strong>Release Date:</strong> @Model.ReleaseDate.ToShortDateString()</p>
     <p><strong>Runtime:</strong> @Model.Runtime minutes (@TimeSpan.FromMinutes(@Model.Runtime).ToString(@"hh\:mm"))</p>
