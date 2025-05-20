@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MoviesLibrary.Web.Models;
 using MoviesLibrary.Web.Services;
 using MoviesLibrary.Web.Views.Movies;
 
@@ -47,16 +48,24 @@ public class MoviesController : Controller
 
     [HttpGet("/add")]
     public IActionResult Add() =>
-        View(new Models.Movie());
+        View(new AddVM());
 
     [HttpPost("/add")]
-    public IActionResult Add(Models.Movie movie)
+    public IActionResult Add(AddVM viewModel)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
+            return View(viewModel);
+
+        _movieService.AddMovie(new Movie
         {
-            _movieService.AddMovie(movie);
-            return RedirectToAction("Index");
-        }
-        return View(movie);
+            Title = viewModel.Title,
+            OriginalTitle = viewModel.OriginalTitle,
+            AlternateTitle = viewModel.AlternateTitle,
+            Genres = viewModel.Genres,
+            ReleaseDate = viewModel.ReleaseDate,
+            Runtime = viewModel.Runtime,
+            PosterUrl = viewModel.PosterUrl
+        });
+        return RedirectToAction("Index");
     }
 }
