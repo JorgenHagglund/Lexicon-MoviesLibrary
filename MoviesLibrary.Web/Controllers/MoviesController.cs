@@ -1,15 +1,30 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MoviesLibrary.Web.Services;
+using MoviesLibrary.Web.Views.Movies;
 
 namespace MoviesLibrary.Web.Controllers;
 
 public class MoviesController : Controller
 {
-    readonly MovieService _movieService = new();
+    static readonly MovieService _movieService = new();
 
     [HttpGet("/")]
     public IActionResult Index() =>
-        View(_movieService.GetAllMovies());
+        View(new IndexVM
+        {
+            Movies =
+                _movieService.GetAllMovies()
+                    .Select(m => new IndexVM.MovieVM
+                    {
+                        Id = m.Id,
+                        Title = m.Title,
+                        Genres = m.Genres,
+                        ReleaseDate = m.ReleaseDate,
+                        Runtime = m.Runtime
+                    })
+                    .ToArray(),
+        });
+
 
     [HttpGet("/details")]
     public IActionResult Details(int id)

@@ -11,7 +11,12 @@ public class NoEqualTitlesAttribute : ValidationAttribute
             return new ValidationResult(ErrorMessage);  
 
         var movie = (Movie)value;
-        if ((movie.Title == movie.OriginalTitle) || (movie.Title == movie.AlternateTitle) || (movie.OriginalTitle == movie.AlternateTitle))
+        if (String.IsNullOrWhiteSpace(movie.OriginalTitle))
+            return new ValidationResult(ErrorMessage);
+
+        if ((!String.IsNullOrWhiteSpace(movie._title) && (movie._title == movie.OriginalTitle)) || 
+            (!(String.IsNullOrWhiteSpace(movie._title) && String.IsNullOrWhiteSpace(movie.AlternateTitle)) && (movie._title == movie.AlternateTitle)) || 
+            (!String.IsNullOrWhiteSpace(movie.AlternateTitle) && (movie.OriginalTitle == movie.AlternateTitle)))
             return new ValidationResult(ErrorMessage);
         return ValidationResult.Success;
     }

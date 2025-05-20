@@ -5,13 +5,13 @@ namespace MoviesLibrary.Web.Services;
 
 public class MovieService
 {
-    static List<Movie> movies = new();
+    static List<Movie> movies = [];
     static uint mextId;
+    readonly string path = Path.Combine(AppContext.BaseDirectory, "Movies.json");
 
     public MovieService()
     {
-        var path = Path.Combine(AppContext.BaseDirectory, "Movies.json");
-        movies = JsonSerializer.Deserialize<List<Movie>>(File.ReadAllText(path)) ?? new List<Movie>();
+        movies = JsonSerializer.Deserialize<List<Movie>>(File.ReadAllText(path)) ?? [];
         mextId = movies.Count == 0 ? 1 : movies.Max(m => m.Id) + 1;   
     }
 
@@ -30,5 +30,8 @@ public class MovieService
         if (movie.Id == 0)
             movie.Id = mextId++;
         movies.Add(movie);
+
+        // Save to file
+        File.WriteAllText(path, JsonSerializer.Serialize(movies));
     }
 }

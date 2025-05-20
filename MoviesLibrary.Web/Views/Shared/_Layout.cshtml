@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <bootstrap-css />
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css" />
+    <title>@ViewBag.Title</title>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.7.1.min.js"
+            asp-fallback-src="/JavaScript/jquery/jquery.min.js"
+            asp-fallback-test="window.jQuery">
+    </script>
+    <bootstrap-js />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="@Url.Action("Index", "Movies")">Movies Library</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="nav-bar nav">
+                        <a class="nav-link" href="@Url.Action("Index", "Movies")">Home</a>
+                        <a class="nav-link" href="@Url.Action("Add", "Movies")">Add Movie</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <content>
+        <div class="container">
+            <h1>Movies Library</h1>
+            <div class="row">
+                @RenderBody()
+            </div>
+        </div>
+    </content>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
