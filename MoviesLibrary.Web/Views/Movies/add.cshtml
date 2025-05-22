@@ -43,6 +43,16 @@
         <button type="submit" class="btn btn-primary">Add Movie</button>
     </form>
 </div>
-<div class="col-4">
+<!--<div class="col-4">
     <div asp-validation-summary="All" class="text-danger field-validation-error"></div>
-</div>
+</div>-->
+
+<!--
+    asp-fallback-test for validator:   $.validator
+    asp-fallback-test for unostrusive   $.validator.unobstrusive
+-->
+
+@section Scripts {
+    <script src="~/JavaScript/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/JavaScript/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
