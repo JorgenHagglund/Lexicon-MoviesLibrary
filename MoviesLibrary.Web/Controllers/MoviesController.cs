@@ -5,16 +5,16 @@ using MoviesLibrary.Web.Views.Movies;
 
 namespace MoviesLibrary.Web.Controllers;
 
-public class MoviesController : Controller
+public class MoviesController(MovieService movieService) : Controller
 {
-    static readonly MovieService _movieService = new();
-
     [HttpGet("/")]
-    public IActionResult Index() =>
-        View(new IndexVM
+    public async Task<IActionResult> Index()
+    {
+        await movieService.LoadAsync(); // Load the movies from the file
+        return View(new IndexVM
         {
             Movies =
-                _movieService.GetAllMovies()
+                movieService.GetAllMovies()
                     .Select(m => new IndexVM.MovieVM
                     {
                         Id = m.Id,
@@ -25,12 +25,12 @@ public class MoviesController : Controller
                     })
                     .ToArray(),
         });
-
+    }
 
     [HttpGet("/details")]
     public IActionResult Details(int id)
     {
-        var movie = _movieService.GetMovie(id);
+        var movie = movieService.GetMovie(id);
         if (movie == null)
             return NotFound();
 
@@ -51,12 +51,12 @@ public class MoviesController : Controller
         View(new AddVM());
 
     [HttpPost("/add")]
-    public IActionResult Add(AddVM viewModel)
+    public async Task<IActionResult> Add(AddVM viewModel)
     {
         if (!ModelState.IsValid)
             return View(viewModel);
 
-        _movieService.AddMovie(new Movie
+        movieService.AddMovie(new Movie
         {
             Title = viewModel.Title,
             OriginalTitle = viewModel.OriginalTitle,
@@ -66,6 +66,7 @@ public class MoviesController : Controller
             Runtime = viewModel.Runtime,
             PosterUrl = viewModel.PosterUrl
         });
+        await movieService.SaveAsync();
         return RedirectToAction("Index");
     }
 }
